@@ -7,8 +7,8 @@ function Dropdown({ options,value,onChange }) {
     const [isOpen, setIsOpen] = useState(false);
     const divRef = useRef();
         
-    const handleClick = () => {
-        setIsOpen((current)=> !current);
+    const handleClickTitle = () => {
+        setIsOpen(current=> !current);
     }
 
     const handleSelect = (val) => {
@@ -36,7 +36,7 @@ function Dropdown({ options,value,onChange }) {
     })
 
     return <div ref={divRef} className="w-48 relative">
-            <Panel className="flex justify-between items-center cursor-pointer" onClick={handleClick}>
+            <Panel className="flex justify-between items-center cursor-pointer" onClick={handleClickTitle}>
                 {value || 'Select...'} {isOpen? <GoChevronDown/> : <GoChevronUp />}
             </Panel>
         

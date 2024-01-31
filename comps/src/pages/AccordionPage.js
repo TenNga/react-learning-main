@@ -1,5 +1,5 @@
 import Accordion from "../components/Accordion";
-import './index.css';
+import '../index.css';
 
 function AccordionPage() {
     const items = [

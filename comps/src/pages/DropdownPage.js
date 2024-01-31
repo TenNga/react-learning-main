@@ -1,4 +1,4 @@
-import './index.css';
+import '../index.css';
 import Dropdown from '../components/Dropdown';
 import { useState } from 'react';
 

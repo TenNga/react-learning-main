@@ -1,5 +1,5 @@
 import Button from "../components/Button";
-import './index.css';
+import '../index.css';
 import { GoBell, GoCloudDownload, GoDatabase } from "react-icons/go";
 
 function App() {
