@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useSelector, useDispatch } from "react-redux";
 import { removeCar } from "../store";
 
@@ -27,6 +28,14 @@ function CarList() {
         );
     })
     return <div className="car-list">{renderCars} <hr /></div>
+=======
+import { useSelector } from "react-redux";
+
+function CarList() {
+    const {cars} = useSelector(state => state);
+    // const renderCars = cars.map(car => <div>Car name: {car.name}, Price: {car.cost}</div>)
+    return <div>renderCars</div>
+>>>>>>> 3814c26d3103fc5e308b9f47ff379e680dacdadb
 }
 
 export default CarList;

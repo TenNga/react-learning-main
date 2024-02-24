@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    box-sizing: border-box;
+}
+
+.main-container {
+    max-width: 1225px;
+    margin: 20px 50px;
+}
+
+.primary-heading {
+    font-size: 32px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input-form{
+    height: 40px;
+    display: flex;
+}
+
+.primary-input {
+    height: 100%;
+    border: 1px solid #080808;
+    border-right: none;
+    flex-grow: 1;
+    padding: 5px 10px;
+}
+
+.primary-btn {
+    border: 1px solid #080808;
+    height: 100%;
+    padding: 0px 24px;
+}
+
+.todo-list-container {
+    margin-top: 4px;
+}
+
+.todo-list {
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f2f2f2;
+    border: 1px solid #c2c2c2;
+}
