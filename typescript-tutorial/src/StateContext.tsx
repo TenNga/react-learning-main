@@ -1,7 +1,7 @@
-import React,{ useContext, useState, createContext, Children } from "react";
-import { State, TodoCard, StateContextType } from './models';
+import React,{ useState, createContext } from "react";
+import { TodoCard, StateContextType } from './models';
 
-//state = [{todo: ['',''],cards: [{id:'',todo:'',onDone:true}]}]
+//state = [{id:'',todo:'',onDone:true}]
 interface props {
     children: React.ReactNode
 }
@@ -9,10 +9,7 @@ interface props {
 const useStateContext = createContext<StateContextType | null>(null)
 
 const Provider:React.FC<props> = ({children}) => {
-    const [state, setState] = useState<State>({
-        todos: '',
-        cards: []
-      });
+    const [state, setState] = useState<TodoCard[]>([]);
     
       return(<useStateContext.Provider value={{state, setState}}>
         {children}

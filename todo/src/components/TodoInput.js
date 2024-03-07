@@ -13,9 +13,7 @@ const TodoInput = () => {
 
     const handleOnSubmit = (event) => {
         event.preventDefault();
-        const uId = parseInt(Date.now() * Math.random()).toString();
         const todo = {
-            id: uId, 
             value: input, 
             isDone: false
         }

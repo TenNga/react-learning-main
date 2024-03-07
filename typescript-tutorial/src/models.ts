@@ -4,12 +4,7 @@ export interface TodoCard{
     isDone: boolean
 }
 
-export interface State {
-    todos: string,
-    cards: TodoCard[]
-}
-
 export interface StateContextType {
-    state: State
-    setState: React.Dispatch<React.SetStateAction<State>>
+    state: TodoCard[] | [],
+    setState: React.Dispatch<React.SetStateAction<TodoCard[]>>
   }

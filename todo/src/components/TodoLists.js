@@ -9,7 +9,9 @@ const TodoLists = () => {
     const renderTodoCards = state.todos.map(todo => {
         return <TodoList key={todo.id} todo={todo} updateTodo={updateTodo} />
     })
-    return <div key={key} className="todo-list-container">{state.todos? renderTodoCards: <h5>Create first Todo.</h5>}</div>
+    return  <div className="todo-list-container">
+                {state.todos.length > 0? renderTodoCards : <h5>Create first Todo.</h5>}
+            </div>
 }
 
 export default TodoLists;

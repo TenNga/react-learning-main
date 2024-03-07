@@ -8,18 +8,18 @@ const TodoContextProvider = ({children}) => {
 
     const fetchTodos = useCallback(async()=>{
         const todos = await axios.get('http://localhost:3005/todos')
-        setState({todos:todos});
+        setState({todos:todos.data});
     },[])
 
     const createTodo = async(value) => {
-        const todo = await axios.post('http://localhost:3005/todos',{value})
-        setState({todos:[...state.todos,todo]})
+        const todo = await axios.post('http://localhost:3005/todos',{...value})
+        setState({todos:[...state.todos,todo.data]})
     }
 
     const updateTodo = async(id,isDoneVal) => {
         const todoUpdated = await axios.put(`http://localhost:3005/todos/${id}`,{isDoneVal:!isDoneVal})
         const updatedTodo = state.todos.map(todo => {
-            return todo.id === id? {...todoUpdated}:todo;
+            return todo.id === id? todoUpdated:todo;
         })
         setState({todos:updatedTodo})
     }

@@ -6,11 +6,10 @@ import {TodoContext} from "./context/useTodoContext";
 
 const App = () => {
 
-    const { fetchTodos,state } = useContext(TodoContext);
+    const { fetchTodos } = useContext(TodoContext);
 
     useEffect(()=> {
         fetchTodos();
-        console.log("Fetched Todoes: ",state)
     },[fetchTodos]);
 
     return <div className="main-container"> 

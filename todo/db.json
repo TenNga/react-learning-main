@@ -1,5 +1,9 @@
 {
-    "todos": [
-    ]
-
+  "todos": [
+    {
+      "id": "1add",
+      "value": "hello",
+      "isDone": false
+    }
+  ]
 }

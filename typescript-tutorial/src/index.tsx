@@ -1,7 +1,6 @@
 import React,{ useState, createContext, useContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { TodoCard, State } from './models';
 import App from './App';
 import { Provider } from './StateContext'
 

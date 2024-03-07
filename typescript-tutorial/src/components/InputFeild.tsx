@@ -1,17 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext, useState } from 'react';
+import { TodoCard } from '../models';
+import useStateContext from '../StateContext';
 
-interface Props{
-    todo: string,
-    setTodo: React.Dispatch<React.SetStateAction<string>>,
-    handleOnSubmit: (e: React.FormEvent)=>void
-}
+const InputField = () => {
+    const {state, setState} = useContext(useStateContext);
 
-const InputField:React.FC<Props> = ({todo, setTodo, handleOnSubmit}) => {
     const inputRef = useRef<HTMLInputElement>(null);
+    const [todo,setTodo] = useState<string>("");
+
     const handleFormOnSubmit = (e: React.FormEvent) => {
-        handleOnSubmit(e);
+        e.preventDefault();
+        const newCard:TodoCard = { id: todo, name: todo, isDone: false}
+        setState([...state,newCard])
+        setTodo("");
         inputRef.current?.focus();
-    }
+      }
 
     return (
         <form onSubmit={handleFormOnSubmit}>
