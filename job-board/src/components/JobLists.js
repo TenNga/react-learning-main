@@ -2,44 +2,25 @@ import React, { useContext } from 'react';
 import { useQuery, useQueries } from "react-query";
 import JobsContext from '../context/Jobs';
 import EachJob from './EachJob';
+import useJobData  from '../hooks/useJobData';
 
 function JobList() {
-    const { jobIds,usersjobIds, setJobIds, fetchJobIds, fetchJobs, lastUser, setLastUser } = useContext(JobsContext);
+    const { fetchJobIds, fetchJobs, lastUser, setLastUser } = useContext(JobsContext);
+    console.log("USEHOOD:: ",useJobData())
 
-    const {data: ids,isLoading} = useQuery(
-        'jobId',
-        fetchJobIds,
-        { onSuccess: ()=> {
-            setJobIds(ids);
-        } }
-    )
+    const {isLoading} = useJobData().isLoading;
+    const users = useJobData().data;
 
-    const userQueries = () => {
-        let arrayQuery = [];
-
-        for(let index = lastUser; index < lastUser+6; index ++) {
-            // console.log("jobid:: ",jobIds[index]);
-            arrayQuery.push(
-                    {
-                        queryKey: `job-${index}`,
-                        queryFn: ()=>jobIds?.length > 0 && fetchJobs(jobIds[index]),
-                        onSuccess: ()=> {
-                            setLastUser(index);
-                        }
-                    }
-                )
-        }
-        return arrayQuery;
+    const handleLoadmore = (e) => {
+        setLastUser(pre=> pre + 6)
     }
 
-    console.log("Use Queries:: ", userQueries());
+    const renderJobs = users?.map(job => <div key={job.id}>{job.data?.title}</div>)
 
-    const users = useQueries(userQueries())
-    console.log('Users:: ',users);
-
-    const renderJobs = users?.map(job => <div key={job.data?.id}>{job.data?.title}</div>)
-
-    return <div>{isLoading? 'Loading....' : renderJobs }</div>
+    return <div>
+        {isLoading? 'Loading....' : renderJobs } 
+        <button onClick={handleLoadmore}>Load 6 more</button>
+        </div>
 };
 
 export default JobList;
