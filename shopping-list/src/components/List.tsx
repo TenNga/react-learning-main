@@ -17,10 +17,10 @@ function List ({eachList}:propType) {
         toggleList(value)
     }
     
-    return <div className="flex w-full justify-between border-b pb-2 border-b-black">
+    return <div className="flex w-full justify-between border-b pb-2 border-b-black pt-2">
         <input type="checkbox" checked={eachList.isDone} onChange={()=>handleCheck(eachList.value)} className="mr-2"/>
-        <span>{eachList.value}</span>
-        <button onClick={()=>handleDelete(eachList.value)} className="last-of-type:ml-auto">X</button>
+        <span className={eachList.isDone? "line-through" : ""}>{eachList.value}</span>
+        <button onClick={()=>handleDelete(eachList.value)} className="border rounded-full w-5 h-5 text-xs bg-red-500 text-white last-of-type:ml-auto">X</button>
     </div>
 };
 
