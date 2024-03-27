@@ -2,7 +2,10 @@ import React, { createContext, useCallback, useState } from "react";
 import { listType, contextType } from "../share/types";
 
 const ShopContext = createContext<contextType>({
-    lists: [], addList: () => void 0
+    lists: [], 
+    addList: () => void 0,
+    removeList: () => void 0,
+    toggleList: () => void 0
   });
 
 interface Props {
@@ -17,7 +20,24 @@ function Provider({children}:Props) {
             setList([...lists,newList])
         },[lists])
 
-    return <ShopContext.Provider value={{lists, addList}}>
+        const removeList = useCallback((value:string)=>{
+            const updatedList = lists.filter(list => list.value != value)
+            setList(updatedList)
+        },[lists])
+
+        const toggleList = useCallback((value:string)=>{
+            const updatedList = lists.map(list => {
+                if(list.value === value) {
+                    return {...list, isDone: !list.isDone};
+                } else {
+                    return list;
+                }
+
+            })
+            setList(updatedList)
+        },[lists])
+
+    return <ShopContext.Provider value={{lists, addList, removeList, toggleList}}>
         {children}
     </ShopContext.Provider>
 

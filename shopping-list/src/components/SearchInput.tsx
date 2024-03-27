@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useListContext } from "../hooks/useListContext";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import DisplaySearch from "./DisplaySearch";
 
 function SearchInput () {
     const [search, setSearch] = useState("");
@@ -30,11 +31,17 @@ function SearchInput () {
         setSearch('');
     }
 
-    return <div>
-        <form onSubmit={handleOnSearchSubmit}>
-            <input onChange={handleOnSearchChange} type="text" placeholder="Search Item" value={search}/>
+    return <div className="mt-5 w-full">
+        <form onSubmit={handleOnSearchSubmit} className="relative">
+            <input 
+            onChange={handleOnSearchChange} 
+            type="text" 
+            placeholder="Search Item" 
+            value={search} 
+            className="border ring-white border-black pl-2 w-full"
+            />
         </form>
-        <ul>{data?.map(food=><li key={food}>{food}</li>)}</ul>
+        <DisplaySearch data={data} clear={setSearch}/>
     </div>
 }
 
