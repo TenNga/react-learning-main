@@ -1,8 +1,15 @@
 import React from "react";
+import { listType } from "../share/types";
 
-function List () {
+type propType = {
+    eachList: listType
+}
+
+function List ({eachList}:propType) {
     return <div>
-        Each list
+        <input type="checkbox" checked={eachList.isDone}/>
+        <span>{eachList.value}</span>
+        <button>X</button>
     </div>
 };
 
