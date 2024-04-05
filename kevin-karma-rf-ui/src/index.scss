@@ -1,0 +1,25 @@
+// Global style
+
+html,body,* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+//Currently this challenge is small but in big project, separating all globle
+//Variable in separate file will be a good practice
+//Variables
+$font-family-primary: 'inter';
+$font-family-secondary: 'Open Sans';
+$heading-1: '32px';
+$heading-2: '24px';
+$heading-3: '20px';
+
+
+
+:export {
+  font-family-primary: $font-family-primary;
+  font-family-secondary: $font-family-secondary;
+  heading-1: $heading-1;
+  heading-2: $heading-2;
+  heading-3: $heading-3;
+}

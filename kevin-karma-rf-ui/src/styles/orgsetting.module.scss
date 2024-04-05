@@ -1,0 +1,21 @@
+.org_setting_container {
+    border-top: 1px solid #BBBBBB;
+    font-family: 'inter';
+}
+
+.org_setting_header{
+    display: flex;
+    align-items: center;
+    margin: 24px 0 24px;
+}
+
+.org_setting_icon {
+    width: 35px;
+    height: 35px;
+    margin-right: 24px;
+}
+
+.org_setting_heading {
+    font-size: 20px;
+    text-transform: capitalize;
+}

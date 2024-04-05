@@ -1,0 +1,29 @@
+.step_one_container {
+    width: 100%;
+    font-family: 'inter';
+}
+
+.step_text_container {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+    padding: 16px 24px;
+    gap: 32px;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    -webkit-border-radius: 4px;
+}
+
+.step_text_body {
+    flex-basis: 221px;
+    padding: 8px;
+}
+
+@media screen and (max-width: 485px){
+    .step_text_container{
+        flex-direction: column;
+    }
+    .step_text_body {
+        flex-basis: auto;
+    }
+}

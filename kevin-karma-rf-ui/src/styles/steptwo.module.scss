@@ -1,0 +1,27 @@
+.step_card_container {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+
+.step_each_card_icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.step_each_card_header_container {
+    display: flex;
+    align-items: end;
+}
+
+.step_register_icon {
+    width: 24px;
+    height: 24px;
+}
+
+@media screen and (max-width: 485px) {
+    
+}

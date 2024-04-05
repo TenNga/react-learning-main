@@ -1,0 +1,55 @@
+.step_four_container {
+    padding: 0;
+    margin-bottom: 20%;
+}
+.step_build_container {
+    color: #FFFFFF;
+    padding: 40px;
+    background-color: #393551;
+    gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.step_build_card_header_container {
+    display: flex;
+    align-items: end;
+}
+
+.step_build_icon{
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+//gap is 24px each, two gap divide into three cards = 48/3 = 16px
+//Since step four card need unique width and height, it no longer uses shared styles
+.step_each_card  {
+    flex: 1 0 calc(33.3% - 16px);
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    padding: 24px 42px 40px 32px ;
+    -webkit-border-radius: 4px;
+}
+
+.step_each_card:nth-child(1) {
+    flex: 0 0 calc(50% - 12.5px);
+}
+
+.step_each_card:nth-child(2) {
+    flex: 0 0 calc(50% - 12.5px);
+}
+
+@media screen and (max-width: 485px) {
+    .step_build_container{
+        padding: 20px;
+        gap: 10px;
+    }
+    .step_each_card:nth-child(1),.step_each_card:nth-child(2), .step_each_card {
+        flex: 0 0 100%;
+        padding: 12px 20px 20px 15px ;
+    }
+}
+
+

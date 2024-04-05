@@ -1,0 +1,29 @@
+.main-container {
+    color: #000000;
+}
+
+.ml-12 {
+    margin-left: 48px;
+}
+
+.mr-12 {
+    margin-right: 48px;
+}
+
+.mt-10 {
+    margin-top: 40px;
+}
+
+@media screen and (max-width: 485px) {
+    .ml-12 {
+        margin-left: 20px;
+    }
+    
+    .mr-12 {
+        margin-right: 20px;
+    }
+    
+    .mt-10 {
+        margin-top: 18px;
+    }
+}
