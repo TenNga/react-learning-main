@@ -5,7 +5,7 @@ import StepTwo from "./StepTwo";
 
 function Step({stepCount}){
     // render base on prop value so that one component is used to render steps
-    
+    //nicer structureß
     const allSteps = {
         "one": StepOne,
         "two": StepTwo,
