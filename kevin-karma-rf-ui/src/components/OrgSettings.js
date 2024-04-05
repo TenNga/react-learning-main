@@ -5,6 +5,7 @@ import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
 import StepFour from "./StepFour";
+import Step from "./Step";
 
 function OrgSettings() {
     return(
@@ -13,10 +14,10 @@ function OrgSettings() {
                 <img className={styles.org_setting_icon} src={PortalIcon} alt="Portal Icon" />
                 <h1 className={styles.org_setting_heading}>Org Settings</h1>
             </div>
-            <StepOne />
-            <StepTwo />
-            <StepThree />
-            <StepFour />
+            <Step stepCount={"one"}/>
+            <Step stepCount={"two"}/>
+            <Step stepCount={"three"}/>
+            <Step stepCount={"four"}/>
         </section>
     )
 };
