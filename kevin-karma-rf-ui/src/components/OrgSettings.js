@@ -1,10 +1,6 @@
 import React from "react";
 import PortalIcon from '../icons/Person Portal.png';
 import styles from '../styles/orgsetting.module.scss';
-import StepOne from "./StepOne";
-import StepTwo from "./StepTwo";
-import StepThree from "./StepThree";
-import StepFour from "./StepFour";
 import Step from "./Step";
 
 function OrgSettings() {
