@@ -1,9 +1,9 @@
 type prepType = {
-    parems:{ id: string }
+    params:{ id: string }
 }
-function BlogPage({parems}:prepType) {
+function BlogPage({params}:prepType) {
     return(
-        <h1>Blog Page {parems.id}</h1>
+        <h1>Blog Page {params.id}</h1>
     )
 
 };
