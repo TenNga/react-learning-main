@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 
 type prepType = {
     params:{ id: string }
@@ -17,7 +18,10 @@ export const generateMetadata = async({params}:prepType):Promise<Metadata> => {
 
 function BlogPage({params}:prepType) {
     return(
-        <h1>Blog Page {params.id}</h1>
+        <>
+            <Link href='/blog'>Main Blog</Link>
+            <h1>Blog Page {params.id}</h1>
+        </>
     )
 
 };
