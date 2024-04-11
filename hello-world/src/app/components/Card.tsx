@@ -1,4 +1,4 @@
-function Card({children,style}:{children:React.ReactNode,style:React.CSSProperties}) {
+function Card({children,style}:{children:React.ReactNode, style?:React.CSSProperties}) {
     const cardStyle = {
         padding: "100px",
         margin: "10px",
