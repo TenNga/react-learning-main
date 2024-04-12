@@ -4,15 +4,20 @@ function DashboardLayout({
     children,
     notifications,
     revenues,
-    users
+    users,
+    login
   }: {
     children: React.ReactNode,
     notifications: React.ReactNode,
     revenues: React.ReactNode,
     users: React.ReactNode,
+    login: React.ReactNode,
   }) {
+    const isLogin = true;
     return (
       <div>
+        {isLogin? 
+        <>
         <div>{children}</div>
         <div style={{display: "flex"}}>
             <div style={{display: "flex", flexDirection: "column"}}>
@@ -20,7 +25,11 @@ function DashboardLayout({
                 <Card>{revenues}</Card>
             </div>
             <Card style={{display: "flex", flex: 1 }}>{notifications}</Card>
-        </div>
+        </div> 
+        </>
+        : 
+        login 
+  }
       </div>
     )
   };
