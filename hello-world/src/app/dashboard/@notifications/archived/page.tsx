@@ -1,4 +1,3 @@
-import Card from "@/app/components/Card";
 import Link from "next/link";
 
 function Archived() {
