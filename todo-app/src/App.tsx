@@ -14,6 +14,8 @@ function App() {
     } 
     return [];
   })
+  const [filterTodos, setFilterTodos] = useState<todoType[]>(todos)
+  const [filter, setFilter] = useState('')
   
   const inputRef = useRef<HTMLInputElement >(null);
   const statusOpts = ['incomplete', 'pending', 'complete']
@@ -45,9 +47,19 @@ function App() {
     })
     allTodos[targetTodo] = {name:allTodos[targetTodo].name,status: event.target.value}
     setTodos([...allTodos])
+    setFilterTodos([...allTodos])
   }
 
-  const renderTodos = todos.map(todo => {
+  const handleFilterChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
+    console.log("Filter: ",filter)
+    
+      const filterState = todos.filter(td => td.status === event.target.value)
+      setFilterTodos(filterState)
+      setFilter(event.target.value)
+
+  }
+
+  const renderTodos = filterTodos.map(todo => {
     return(
       <li key={todo.name}>
         <label>{todo.name}</label>
@@ -67,11 +79,24 @@ function App() {
         <h1>Todo LocalStorage App</h1>
       </header>
       <main>
-        <div className='task-form'>
-          <form onSubmit={handleTodoSubmit}>
-            <input ref={inputRef} type="text" placeholder='Task' required/>
-            <button type='submit'>Add</button>
-          </form>
+        <div className='add-filter'>
+          <div className='task-form'>
+            <form onSubmit={handleTodoSubmit}>
+              <input ref={inputRef} type="text" placeholder='Task' required/>
+              <button type='submit'>Add</button>
+            </form>
+          </div>
+
+          <div>
+              <label>Filter</label>
+              <select value={filter} onChange={handleFilterChange} className={`status-${filter}`} >
+                {statusOpts.map((option) => (
+                  <option key={option} value={option} className={`status-${option}`}>
+                    {option}
+                  </option>
+                ))}
+              </select>
+          </div>
         </div>
 
         <div className='todo-container'>

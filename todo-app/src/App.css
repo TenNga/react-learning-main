@@ -9,6 +9,11 @@
   margin-bottom: 5rem;
 }
 
+.add-filter {
+  display: flex;
+  justify-content: space-between;
+}
+
 .task-form {
   width: 100%;
   display: flex;
