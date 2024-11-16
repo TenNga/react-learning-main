@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
 
 interface todoType {
@@ -7,11 +7,21 @@ interface todoType {
 }
 
 function App() {
-  const [todos, setTodos] = useState<todoType[]>([])
-  const [selectedOption, setSelectedOption] = useState<string>('')
+  const [todos, setTodos] = useState<todoType[]>(()=>{
+    const storedItems = localStorage.getItem('todos');
+    if (storedItems) {
+      return(JSON.parse(storedItems));
+    } 
+    return [];
+  })
   
   const inputRef = useRef<HTMLInputElement >(null);
   const statusOpts = ['incomplete', 'pending', 'complete']
+
+
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
   const handleTodoSubmit = (event:React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -28,7 +38,7 @@ function App() {
   const handleStatusChange = (event:React.ChangeEvent<HTMLSelectElement>,todo:todoType) => {
     let targetTodo = 0;
     const allTodos = [...todos];
-    
+
     todos.forEach((t,i) => {
       if(t.name === todo.name)
         targetTodo = i;
