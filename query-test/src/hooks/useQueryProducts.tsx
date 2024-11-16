@@ -6,6 +6,7 @@ export const fetchProducts = async () => {
     const URL = 'https://dummyjson.com/products';
     const resp = await axios.get(URL)
     const data = await resp.data
+    console.log("DATA:: ",data)
     return data;
 }
 

@@ -8,9 +8,10 @@ function App() {
 
   useEffect(()=>{
     setProducts(data?.products);
-  },[])
+    console.log("PRODUCTS:: ",products)
+  },[products])
 
-  const renderProductTitle = products?.map(pd => <li>{pd.title}</li>);
+  const renderProductTitle = products?.map(pd => <li key={pd.title}>{pd.title}</li>);
 
   return (
     <div className="App">
