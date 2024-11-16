@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef, useState } from 'react';
 import './App.css';
 
+type todoType = {
+  name: string,
+  status: string
+}
+
 function App() {
+  const [todos, setTodos] = useState<todoType[]>([])
+  
+  const inputRef = useRef<HTMLInputElement >(null);
+
+  const handleTodoSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if(inputRef.current){
+      const newTodo = {
+        name: inputRef.current?.value,
+        status: 'incomplete'
+      }
+      setTodos([...todos,newTodo])
+    }
+  }
+
+  const renderTodos = todos.map(todo => {
+    return(
+      <li key={todo.name}>
+        <input type="checkbox" />
+        <label>{todo.name}</label>
+      </li>
+    )
+  })
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>Todo LocalStorage App</h1>
       </header>
+      <main>
+        <form onSubmit={handleTodoSubmit}>
+          <input ref={inputRef} type="text" placeholder='Task' required/>
+          <button type='submit'>Add</button>
+        </form>
+
+        <div>
+          <ul>
+            {renderTodos}
+          </ul>
+        </div>
+      </main>
     </div>
   );
 }
