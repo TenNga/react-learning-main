@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './App.css';
+import { todoType } from './types';
+import EachTodo from './components/EachTodo';
+import { statusOpts } from './constant';
 
-interface todoType {
-  name: string,
-  status: string
-}
 
 function App() {
   const [todos, setTodos] = useState<todoType[]>(()=>{
@@ -18,8 +17,6 @@ function App() {
   const [filter, setFilter] = useState('')
   
   const inputRef = useRef<HTMLInputElement >(null);
-  const statusOpts = ['incomplete', 'pending', 'complete']
-
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -61,16 +58,7 @@ function App() {
 
   const renderTodos = filterTodos.map(todo => {
     return(
-      <li key={todo.name}>
-        <label>{todo.name}</label>
-        <select value={todo.status} onChange={(event)=>handleStatusChange(event,todo)} className={`status-${todo.status}`} >
-        {statusOpts.map((option) => (
-          <option key={option} value={option} className={`status-${option}`}>
-            {option}
-          </option>
-        ))}
-      </select>
-      </li>
+      <EachTodo todo={todo} handleStatusChange={handleStatusChange}/>
     )
   })
   return (
