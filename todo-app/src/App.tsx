@@ -3,6 +3,7 @@ import './App.css';
 import { todoType } from './types';
 import EachTodo from './components/EachTodo';
 import { statusOpts } from './constant';
+import TodoForm from './components/TodoForm';
 
 
 function App() {
@@ -13,26 +14,26 @@ function App() {
     } 
     return [];
   })
-  const [filterTodos, setFilterTodos] = useState<todoType[]>(todos)
+  const [filterTodos, setFilterTodos] = useState<todoType[]>([])
   const [filter, setFilter] = useState('')
   
-  const inputRef = useRef<HTMLInputElement >(null);
+  // const inputRef = useRef<HTMLInputElement >(null);
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
 
-  const handleTodoSubmit = (event:React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if(inputRef.current){
-      const newTodo = {
-        name: inputRef.current?.value,
-        status: 'incomplete'
-      }
-      setTodos([...todos,newTodo])
-      inputRef.current.value = '';
-    }
-  }
+  // const handleTodoSubmit = (event:React.FormEvent<HTMLFormElement>) => {
+  //   event.preventDefault();
+  //   if(inputRef.current){
+  //     const newTodo = {
+  //       name: inputRef.current?.value,
+  //       status: 'incomplete'
+  //     }
+  //     setTodos([...todos,newTodo])
+  //     inputRef.current.value = '';
+  //   }
+  // }
 
   const handleStatusChange = (event:React.ChangeEvent<HTMLSelectElement>,todo:todoType) => {
     let targetTodo = 0;
@@ -56,11 +57,13 @@ function App() {
 
   }
 
-  const renderTodos = filterTodos.map(todo => {
-    return(
-      <EachTodo todo={todo} handleStatusChange={handleStatusChange}/>
-    )
-  })
+  const renderTodos = () => {
+    if(filterTodos.length > 0){
+      return filterTodos.map(todo => <EachTodo todo={todo} handleStatusChange={handleStatusChange}/>)
+    } else {
+      return todos.map(todo => <EachTodo todo={todo} handleStatusChange={handleStatusChange}/>)
+    }
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -69,10 +72,7 @@ function App() {
       <main>
         <div className='add-filter'>
           <div className='task-form'>
-            <form onSubmit={handleTodoSubmit}>
-              <input ref={inputRef} type="text" placeholder='Task' required/>
-              <button type='submit'>Add</button>
-            </form>
+            <TodoForm handleSubmit={setTodos} todos={todos} />
           </div>
 
           <div>
@@ -89,7 +89,7 @@ function App() {
 
         <div className='todo-container'>
           <ul className='todo-list'>
-            {renderTodos}
+            { renderTodos() }
           </ul>
         </div>
       </main>
