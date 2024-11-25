@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useTodos } from '../hooks/useTodos';
 import EachTodo from '../components/EachTodo';
 import { todoType } from '../types';
@@ -6,7 +6,7 @@ import { todoType } from '../types';
 const TodoContainer = () => {
     const {todos, setTodos, filterTodos, setFilterTodos } = useTodos();
 
-    const handleStatusChange = (event:React.ChangeEvent<HTMLSelectElement>,todo:todoType) => {
+    const handleStatusChange = useCallback((event:React.ChangeEvent<HTMLSelectElement>,todo:todoType) => {
         let targetTodo = 0;
         const allTodos = [...todos];
     
@@ -16,7 +16,7 @@ const TodoContainer = () => {
         })
         allTodos[targetTodo] = {name:allTodos[targetTodo].name,status: event.target.value}
         setTodos([...allTodos])
-      }
+      },[])
 
     const renderTodos = () => {
         if(filterTodos.length > 0){

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { todoType } from '../types'
 import { statusOpts } from '../constant'
 
 
-const EachTodo = ({todo,handleStatusChange}: {todo:todoType,handleStatusChange?: (event: React.ChangeEvent<HTMLSelectElement>, todo: todoType) => void}) => {
+const EachTodo = memo(({todo,handleStatusChange}: {todo:todoType,handleStatusChange?: (event: React.ChangeEvent<HTMLSelectElement>, todo: todoType) => void}) => {
   return (
     <li key={todo.name}>
         <label data-testid="todoName">{todo.name}</label>
@@ -16,6 +16,6 @@ const EachTodo = ({todo,handleStatusChange}: {todo:todoType,handleStatusChange?:
       </select>
       </li>
   )
-}
+})
 
 export default EachTodo
