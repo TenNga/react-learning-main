@@ -22,8 +22,5 @@ describe('Form component should', () => {
 
         expect(mock).toHaveBeenCalled();
         expect(mock).toHaveBeenCalledWith([{name: 'Test todo', status: 'incomplete'}])
-
-
-
     })
 })
