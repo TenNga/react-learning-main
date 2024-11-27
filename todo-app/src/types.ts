@@ -13,3 +13,13 @@ export interface todoContextProps {
   filter: string, 
   setFilter: React.Dispatch<React.SetStateAction<string>>
 }
+
+// export interface filterContextProps {
+//   filter: string, 
+//   setFilter: React.Dispatch<React.SetStateAction<string>>
+// }
+
+// export interface filterTodosContextProps {
+//   filterTodos: todoType[], 
+//   setFilterTodos: React.Dispatch<React.SetStateAction<todoType[]>>, 
+// }

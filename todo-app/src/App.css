@@ -108,3 +108,12 @@
 .status-complete {
   background-color: rgb(99, 169, 99);
 }
+
+
+.visually-hidden {
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+}

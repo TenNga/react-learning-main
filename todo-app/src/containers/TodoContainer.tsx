@@ -1,28 +1,15 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useTodos } from '../hooks/useTodos';
 import EachTodo from '../components/EachTodo';
-import { todoType } from '../types';
 
 const TodoContainer = () => {
-    const {todos, setTodos, filterTodos, setFilterTodos } = useTodos();
-
-    const handleStatusChange = useCallback((event:React.ChangeEvent<HTMLSelectElement>,todo:todoType) => {
-        let targetTodo = 0;
-        const allTodos = [...todos];
-    
-        todos.forEach((t,i) => {
-          if(t.name === todo.name)
-            targetTodo = i;
-        })
-        allTodos[targetTodo] = {name:allTodos[targetTodo].name,status: event.target.value}
-        setTodos([...allTodos])
-      },[])
+    const {todos, filterTodos } = useTodos();
 
     const renderTodos = () => {
         if(filterTodos.length > 0){
-          return filterTodos.map(todo => <EachTodo todo={todo} handleStatusChange={handleStatusChange}/>)
+          return filterTodos.map(todo => <EachTodo key={todo.name} todo={todo} />)
         } else {
-          return todos.map(todo => <EachTodo todo={todo} handleStatusChange={handleStatusChange}/>)
+          return todos.map(todo => <EachTodo key={todo.name} todo={todo} />)
         }
       }
 

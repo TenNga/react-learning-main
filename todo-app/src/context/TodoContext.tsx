@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useMemo, useState } from 'react'
 import { todoContextProps, todoType } from '../types'
 
 export const TodoContext = createContext<todoContextProps | null>(null)
@@ -14,9 +14,17 @@ export const TodoProvider = ({children}:{ children: React.ReactNode }) => {
   const [filterTodos, setFilterTodos] = useState<todoType[]>([])
   const [filter, setFilter] = useState('')
 
-  const shareValue = {
-    todos, setTodos, filterTodos, setFilterTodos, filter, setFilter
-  }
+  const shareValue = useMemo(
+    () => ({
+      todos,
+      setTodos,
+      filterTodos,
+      setFilterTodos,
+      filter,
+      setFilter,
+    }),
+    [todos, filterTodos, filter] // Recreate only if these values change
+  );
 
   return(
     <TodoContext.Provider value={shareValue}>

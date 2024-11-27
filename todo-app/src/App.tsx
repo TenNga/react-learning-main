@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import { useTodos } from './hooks/useTodos';
@@ -7,7 +7,8 @@ import Header from './components/Header';
 import Filter from './containers/Filter';
 
 function App() {
-  const { todos, setTodos } = useTodos();
+  const { todos } = useTodos();
+  // const TodoContainer = lazy(() => import("./containers/TodoContainer"))
   
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
@@ -19,11 +20,13 @@ function App() {
       <main>
         <div className='add-filter'>
           <div className='task-form'>
-            <TodoForm handleSubmit={setTodos} todos={todos} />
+            <TodoForm />
           </div>
           <Filter />
         </div>
-        <TodoContainer />
+      {/* <Suspense fallback={<h1>Loading...</h1>}> */}
+        {todos && <TodoContainer />}
+      {/* </Suspense> */}
       </main>
     </div>
   );

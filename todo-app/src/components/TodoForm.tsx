@@ -1,10 +1,11 @@
 import React, { useRef } from 'react'
 import { todoType } from '../types';
+import { useTodos } from '../hooks/useTodos';
 
-const TodoForm = ({handleSubmit, todos}:{handleSubmit: React.Dispatch<React.SetStateAction<todoType[]>>, todos: todoType[]}) => {
+const TodoForm = () => {
 
     const inputRef = useRef<HTMLInputElement >(null);
-
+    const {setTodos} = useTodos();
     const handleTodoSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if(inputRef.current){
@@ -12,14 +13,15 @@ const TodoForm = ({handleSubmit, todos}:{handleSubmit: React.Dispatch<React.SetS
             name: inputRef.current?.value,
             status: 'incomplete'
           }
-          handleSubmit([...todos,newTodo])
+          setTodos(todos => [...todos,newTodo])
           inputRef.current.value = '';
         }
       }
 
   return (
     <form role='form' onSubmit={handleTodoSubmit}>
-              <input ref={inputRef} type="text" placeholder='Task' required/>
+      <label className='visually-hidden' htmlFor="todo-input">Enter Todo Task</label>
+              <input id='todo-input' ref={inputRef} type="text" placeholder='Enter Task' required/>
               <button type='submit'>Add</button>
     </form>
   )
