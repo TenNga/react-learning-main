@@ -3,7 +3,7 @@ import React from "react";
 const Filter = ({ categories, handleCtgChange }) => {
   const renderCateg = categories.map((ctg) => {
     return (
-      <label key={ctg} >
+      <label key={ctg} data-testid="cate-label">
         {ctg}
         <input
           type="checkbox"
