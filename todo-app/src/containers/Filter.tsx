@@ -5,12 +5,12 @@ import { FilterOption } from '../components/FilterOption';
 
 const Filter = () => {
 
-    const {todos, filter, setFilterTodos, setFilter} = useTodos();
+    const {todos, filter, filterTodoSetter, filterSetter} = useTodos();
 
     const handleFilterChange = (event:React.ChangeEvent<HTMLSelectElement>) => {        
           const filterState = todos.filter(td => td.status === event.target.value)
-          setFilterTodos(filterState)
-          setFilter(event.target.value)
+          filterTodoSetter(filterState)
+          filterSetter(event.target.value)
       }
 
     return (

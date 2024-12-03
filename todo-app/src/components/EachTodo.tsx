@@ -5,7 +5,7 @@ import { useTodos } from '../hooks/useTodos'
 
 
 const EachTodo = memo(({todo}:{todo:todoType}) => {
-  const { todos, setTodos } = useTodos();
+  const { todos, todoSetter } = useTodos();
 
   const handleStatusChange = useCallback((event:React.ChangeEvent<HTMLSelectElement>,todo:todoType) => {
     let targetTodo = 0;
@@ -16,7 +16,7 @@ const EachTodo = memo(({todo}:{todo:todoType}) => {
         targetTodo = i;
     })
     allTodos[targetTodo] = {name:allTodos[targetTodo].name,status: event.target.value}
-    setTodos([...allTodos])
+    todoSetter([...allTodos])
   },[])
 
   return (

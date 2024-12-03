@@ -7,11 +7,11 @@ export interface todoType {
 
 export interface todoContextProps {
   todos: todoType[],
-  setTodos: React.Dispatch<React.SetStateAction<todoType[]>>,
+  todoSetter: (value:todoType[])=>void,
   filterTodos: todoType[], 
-  setFilterTodos: React.Dispatch<React.SetStateAction<todoType[]>>, 
+  filterTodoSetter: (value:todoType[])=>void, 
   filter: string, 
-  setFilter: React.Dispatch<React.SetStateAction<string>>
+  filterSetter: (value:string)=>void
 }
 
 // export interface filterContextProps {

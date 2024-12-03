@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    display: grid;
+    grid-template-colums: repeat(2, fit-content(360px));
+    gap: 40px;
+  }
+  @media (min-width: 760px) {
+    .container {
+      max-width: 800px;
+      grid-template-columns: repeat(2, fit-content(360px));
+      gap: 20px;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 800px;
+      grid-template-columns: repeat(3, fit-content(360px));
+      gap: 40px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      max-width: 1200px;
+      grid-template-columns: repeat(3, fit-content(360px));
+      gap: 40px;
+    }
+  }
+  

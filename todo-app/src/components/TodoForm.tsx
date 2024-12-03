@@ -5,7 +5,7 @@ import { useTodos } from '../hooks/useTodos';
 const TodoForm = () => {
 
     const inputRef = useRef<HTMLInputElement >(null);
-    const {setTodos} = useTodos();
+    const {todoSetter,todos} = useTodos();
     const handleTodoSubmit = (event:React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if(inputRef.current){
@@ -13,7 +13,7 @@ const TodoForm = () => {
             name: inputRef.current?.value,
             status: 'incomplete'
           }
-          setTodos(todos => [...todos,newTodo])
+          todoSetter([...todos,newTodo])
           inputRef.current.value = '';
         }
       }

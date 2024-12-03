@@ -14,20 +14,26 @@ export const TodoProvider = ({children}:{ children: React.ReactNode }) => {
   const [filterTodos, setFilterTodos] = useState<todoType[]>([])
   const [filter, setFilter] = useState('')
 
-  const shareValue = useMemo(
+  const shareTodo = useMemo(
     () => ({
       todos,
-      setTodos,
-      filterTodos,
-      setFilterTodos,
-      filter,
-      setFilter,
+      todoSetter: (value:todoType[])=>setTodos(value),
     }),
-    [todos, filterTodos, filter] // Recreate only if these values change
+    [todos] // Recreate only if these values change
   );
 
+  const shareFilter = useMemo(()=>({
+    filter,
+    filterSetter: (value:string) => setFilter(value),
+  }),[filter])
+
+  const shareFilterTodos = useMemo(()=>({
+      filterTodos,
+      filterTodoSetter: (value:todoType[]) =>setFilterTodos(value),
+  }),[filterTodos])
+
   return(
-    <TodoContext.Provider value={shareValue}>
+    <TodoContext.Provider value={{...shareTodo,...shareFilter,...shareFilterTodos}}>
       {children}
     </TodoContext.Provider>
   )
